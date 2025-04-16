@@ -1,0 +1,46 @@
+title: "11ty Lux"
+description: "11ty Lux starter themes for eleventy projects."
+image: "https://placehold.co/400x400"
+language: "en"
+locale: en_US
+favicon: /img/logos.png
+url: "http://localhost:8080"
+metasocial: 
+ - facebook: "https://www.facebook.com/"
+ - twitteruser: "@username"
+ - twitter: "https://x.com/user"
+
+sidebar: 
+ title: "11ty Lux"
+ sub_title: "11ty Lux starter themes for eleventy projects."
+ image: "/img/logos.png" 
+ list: 
+    - nav: Articles
+      url: /
+    - nav: About Me
+      url: /about/
+    - nav: Download
+      url: https://github.com/adamdjbrett/11ty-lux
+ social: 
+    - title: Visit my Github
+      icon: fab fa-github
+      url: https://github.com/user
+    - title: Be Friends on Facebook
+      icon: fab fa-facebook
+      url: https://facebook.com/user
+    - title: Follow my Twitter
+      icon: fab fa-twitter
+      url: https://x.com/user
+ footer: 
+   text: 11ty Lux
+   text1: Develop By
+   text2: Adam DJ Brett
+   text2_url: https://adamdjbrett.com
+
+author: 
+ name: "Jhon Dhoe"
+ image: "/img/kimia-kazemi--gbBWj7KnnQ-unsplash.jpg"
+ about: "Illustration by kimia kazemi on Unsplash"
+ email: "info@adamdjbrett.com"
+ url: "https://www.adamdjbrett.com"
+ phone: "+123456789"

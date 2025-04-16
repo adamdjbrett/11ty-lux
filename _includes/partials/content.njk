@@ -1,0 +1,55 @@
+<style>img,iframe {max-width:100%;}</style>
+          <div class="page-module--page--aeaf7">
+            <div class="page-module--inner--bbb89">
+              <div class="page-module--body--91ea2">
+                <div class="feed-module--feed--be542">
+                  {{ content | safe }}{% for post in pagination.items %}
+                  <div class="feed-module--item--093ea">
+                    <div class="feed-module--meta--5bd77">
+                      <time class="feed-module--time--1da0e" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+                      <span class="feed-module--divider--dc8bf"></span>
+                      <span class="feed-module--category--588f4">
+                        <a class="feed-module--link--797ef" href="/categories#{{ post.data.category | slug }}">{{post.data.category}}</a>
+                      </span>
+                    </div>
+                    <h2 class="feed-module--title--6ed13">
+                      <a class="feed-module--link--797ef" href="{{post.url}}">{{post.data.title}}</a>
+                    </h2>
+                    <p class="feed-module--description--25c4d">{{post.data.description}}</p>
+                  </div>{% endfor %}
+                </div>
+                <div class="pagination-module--pagination--e5305">
+                  <div class="pagination-module--previous--85cf8">
+                    {% if pagination.href.previous %}<a aria-current="page" rel="prev" class="pagination-module--previousLink--35663" href="{{ pagination.href.previous }}">← PREV</a>{% endif %}
+                  </div>
+                  <div class="pagination-module--next--92e1f">
+                    {% if pagination.href.next %}<a rel="next" class="pagination-module--nextLink--9a2d7" href="{{ pagination.href.next }}">→ NEXT</a>{% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+                  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const themeSwitcherButton = document.querySelector('.theme-switcher-module--button--1cdf0');
+    const rootElement = document.documentElement;
+
+    const setTheme = (theme) => {
+      if (theme === 'dark') {
+        rootElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        rootElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      }
+    };
+
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    setTheme(currentTheme);
+
+    themeSwitcherButton.addEventListener('click', function () {
+      const isDarkMode = rootElement.classList.contains('dark');
+      setTheme(isDarkMode ? 'light' : 'dark');
+    });
+  });
+</script>

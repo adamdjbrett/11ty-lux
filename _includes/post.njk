@@ -1,0 +1,91 @@
+---
+layout: base.njk
+---
+<style>img,iframe {max-width:100%;}</style>
+        <div class="post-module--post--cd62a">
+          <div class="post-module--buttons--26059">
+            <a class="button-module--button--5ffa9 post-module--buttonArticles--8a265" href="/">All Articles</a>
+<div class="theme-switcher-module--themeSwitcher--8bcb4">
+  <button class="theme-switcher-module--button--1cdf0">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <title>light</title>
+      <path class="theme-switcher-module--moon--f9082" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      <circle class="theme-switcher-module--sun--65dc4" cx="12" cy="12" r="5"></circle>
+      <line class="theme-switcher-module--sun--65dc4" x1="12" y1="1" x2="12" y2="3"></line>
+      <line class="theme-switcher-module--sun--65dc4" x1="12" y1="21" x2="12" y2="23"></line>
+      <line class="theme-switcher-module--sun--65dc4" x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line class="theme-switcher-module--sun--65dc4" x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line class="theme-switcher-module--sun--65dc4" x1="1" y1="12" x2="3" y2="12"></line>
+      <line class="theme-switcher-module--sun--65dc4" x1="21" y1="12" x2="23" y2="12"></line>
+      <line class="theme-switcher-module--sun--65dc4" x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line class="theme-switcher-module--sun--65dc4" x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </button>
+</div>
+          </div>
+          <div class="post-module--content--49372">
+            <div class="post-content-module--postContent--5129c">
+              <h1 class="post-content-module--title--b7e5d">{{title}}</h1>
+              <div class="post-content-module--body--3be78">
+                <p class="toci p-3">
+                  {{ content | toc| safe }}
+                </p>
+                <hr>
+                <heading-anchors>{{content|safe}}</heading-anchors>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-module--footer--87cff">
+            <div class="post-footer-module--post-footer--9c13c">
+              <p class="post-footer-module--date--abfe9">Published {{ page.date | readableDate }}</p>
+            </div>
+            <ul class="post-tags-module--post-tags--6c235">{%- for tag in tags | filterTagList %}{%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+                <li class="post-tags-module--item--53595"><a class="button-module--button--5ffa9" href="{{ tagUrl }}">{{ tag }}</a></li>{% endfor %}
+            </ul>
+            <div class="post-author-module--post-author--2247e">
+              <p class="post-author-module--description--78aeb">{{description}}</p>
+            </div>
+            
+{%- if collections.posts %}
+{%- set previousPost = collections.posts | getPreviousCollectionItem %}
+{%- set nextPost = collections.posts | getNextCollectionItem %}
+{%- if nextPost or previousPost %}
+            <div class="pagination-module--pagination--e5305 mt-5 mb-5">
+                  <div class="pagination-module--previous--85cf8">
+                    {%- if previousPost %}<a aria-current="page" rel="prev" class="pagination-module--previousLink--35663" href="{{ previousPost.url }}">← PREV</a>{%- endif %}
+                  </div>
+                  <div class="pagination-module--next--92e1f">
+                    {%- if nextPost %}<a rel="next" class="pagination-module--nextLink--9a2d7" href="{{ nextPost.url }}">→ NEXT</a>{%- endif %}
+                  </div>
+                </div>
+          </div>
+          {%- endif %}
+{%- endif %}
+
+        </div>
+        </div>
+        <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const themeSwitcherButton = document.querySelector('.theme-switcher-module--button--1cdf0');
+    const rootElement = document.documentElement;
+
+    const setTheme = (theme) => {
+      if (theme === 'dark') {
+        rootElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        rootElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      }
+    };
+
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    setTheme(currentTheme);
+
+    themeSwitcherButton.addEventListener('click', function () {
+      const isDarkMode = rootElement.classList.contains('dark');
+      setTheme(isDarkMode ? 'light' : 'dark');
+    });
+  });
+</script>
