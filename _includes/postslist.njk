@@ -1,0 +1,14 @@
+{% for post in postslist | reverse %}
+                  <div class="feed-module--item--093ea">
+                    <div class="feed-module--meta--5bd77">
+                      <time class="feed-module--time--1da0e" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+                      <span class="feed-module--divider--dc8bf"></span>
+                      <span class="feed-module--category--588f4">
+                        <a class="feed-module--link--797ef" href="/categories#{{ post.data.category | slug }}">{{post.data.category}}</a>
+                      </span>
+                    </div>
+                    <h2 class="feed-module--title--6ed13">
+                      <a class="feed-module--link--797ef" href="{{post.url}}">{{post.data.title}}</a>
+                    </h2>
+                    <p class="feed-module--description--25c4d">{{post.data.description}}</p>
+                  </div>{% endfor %}
