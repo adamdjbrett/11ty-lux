@@ -34,7 +34,7 @@
                 </div>
                 <p class="sidebar-author-module--description--05f75">{{metadata.sidebar.sub_title or metadata.description}}</p>
               </div>
-              <nav class="sidebar-menu-module--sidebar-menu--a1f76">
+              <nav class="sidebar-menu-module--sidebar-menu--a1f76" role="navigation">
                 <ul class="sidebar-menu-module--list--11f39">
                   {% for i in metadata.sidebar.list %}<li class="sidebar-menu-module--item--67667">
                     <a aria-current="page" class="sidebar-menu-module--link--b41cc" href="{{i.url}}">{{i.nav}}</a>
@@ -51,9 +51,9 @@
                   </li>
                   {% endfor %}
                 </ul>
-              </div>
+              </div><footer role="contentinfo">
               <div class="sidebar-copyright-module--sidebar-copyright--97d08">
                 Copyright © <span id="tahun"></span>{{metadata.sidebar.footer.text}}<br/>Built with <a href="https://11ty.dev">11ty</a> {{metadata.sidebar.footer.text1}} <a href="{{metadata.sidebar.footer.text2_url}}">{{metadata.sidebar.footer.text2}}</a>
                 </div>
-            </div>
+            </div></footer>
           </div>
