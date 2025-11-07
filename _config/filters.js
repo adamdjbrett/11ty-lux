@@ -1,4 +1,8 @@
 import { DateTime } from "luxon";
+import CleanCSS from "clean-css";
+import htmlminifier from "html-minifier-terser";
+import fs from "fs";
+import path from "path";
 
 export default function(eleventyConfig) {
 	eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
@@ -33,6 +37,43 @@ export default function(eleventyConfig) {
 
 	eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {
 		return (tags || []).filter(tag => ["all", "posts" , "featured"].indexOf(tag) === -1);
+	});
+
+	// Nunjucks-only filters for inlining and minifying
+	eleventyConfig.addNunjucksFilter("inlineFile", (relativePath) => {
+		try {
+			const absolute = path.resolve(process.cwd(), relativePath);
+			return fs.readFileSync(absolute, "utf8");
+		} catch (e) {
+			console.error(`[inlineFile] Unable to read ${relativePath}: ${e.message}`);
+			return "";
+		}
+	});
+
+	eleventyConfig.addNunjucksFilter("cssmin", (code) => {
+		try {
+			return new CleanCSS({ level: 2 }).minify(code || "").styles || "";
+		} catch (e) {
+			console.error(`[cssmin] Error: ${e.message}`);
+			return code;
+		}
+	});
+
+	eleventyConfig.addNunjucksFilter("htmlmin", (code) => {
+		try {
+			return htmlminifier.minify(code || "", {
+				collapseWhitespace: true,
+				removeComments: true,
+				removeRedundantAttributes: true,
+				removeEmptyAttributes: true,
+				useShortDoctype: true,
+				minifyCSS: true,
+				minifyJS: true
+			});
+		} catch (e) {
+			console.error(`[htmlmin] Error: ${e.message}`);
+			return code;
+		}
 	});
 
 };

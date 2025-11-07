@@ -4,11 +4,11 @@
                       <time class="feed-module--time--1da0e" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
                       <span class="feed-module--divider--dc8bf"></span>
                       <span class="feed-module--category--588f4">
-                        <a class="feed-module--link--797ef" href="/categories#{{ post.data.category | slug }}">{{post.data.category}}</a>
+                        <a class="feed-module--link--797ef" href="/categories#{{ post.data.category | slug }}" title="{{ post.data.category }}" aria-label="Read more about {{ post.data.category}}">{{post.data.category}}</a>
                       </span>
                     </div>
                     <h2 class="feed-module--title--6ed13">
-                      <a class="feed-module--link--797ef" href="{{post.url}}">{{post.data.title}}</a>
+                      <a class="feed-module--link--797ef" href="{{post.url}}"  title="{{post.data.title}}" aria-label="Read more about {{post.data.title}}">{{ post.data.title }}</a>
                     </h2>
                     <p class="feed-module--description--25c4d">{{post.data.description}}</p>
                   </div>{% endfor %}

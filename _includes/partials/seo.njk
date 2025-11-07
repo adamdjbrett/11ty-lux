@@ -26,5 +26,8 @@
 <meta property="og:locale" content="{{metadata.locale}}">
 <meta name="generator" content="{{ eleventy.generator }}"> 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","description":"{{metadata.description}}","headline":"{{metadata.title}} - {{metadata.description}}","name":"{{metadata.title}}","url":"{{metadata.url}}{{page.url}}"}</script>
-<link href="/css/style.css" rel="stylesheet">
+{# Inline and minify main CSS using Nunjucks filters #}
+<style>
+{% filter cssmin %}{{ 'public/css/style.css' | inlineFile }}{% endfilter %}
+</style>
 {%- js %}{% include "node_modules/@zachleat/heading-anchors/heading-anchors.js" %}{% endjs %}
